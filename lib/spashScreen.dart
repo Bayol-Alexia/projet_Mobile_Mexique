@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:proyecto_mobil/constantes.dart' as con;
 
 class splashScreen extends StatefulWidget {
   const splashScreen({super.key, required this.title});
@@ -39,19 +40,38 @@ class _splashScreen extends State<splashScreen> {
     return Scaffold(
       body: Stack(
         children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: const AssetImage('../images/Welcome1.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Padding(
+              padding: EdgeInsets.only(
+                  top: size.height * 0.1, left: size.width * 0.1),
+              child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Image.asset('../images/Welcome2.png'))),
           Padding(
             padding: EdgeInsets.only(bottom: size.height * 0.1),
             child: Align(
               alignment: Alignment.bottomCenter,
-              child: Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/login');
-                    },
-                    child: const Text('Iniciar Sesión'),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/login');
+                },
+                child: const Text(
+                  'Iniciar Sesión',
+                  style: TextStyle(color: con.blanco),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: con.primario,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
                   ),
-                ],
+                ),
               ),
             ),
           ),
@@ -60,6 +80,7 @@ class _splashScreen extends State<splashScreen> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
                     'Si no tiene cuenta, ',
@@ -73,7 +94,7 @@ class _splashScreen extends State<splashScreen> {
                       'Registrese',
                       style: TextStyle(color: Colors.deepOrange),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
