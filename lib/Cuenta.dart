@@ -12,14 +12,15 @@ class Cuenta extends StatefulWidget {
 }
 
 class _CuentaState extends State<Cuenta> {
+  final nombre = TextEditingController();
+  final correo = TextEditingController();
+  final direccion = TextEditingController();
+  final password = TextEditingController();
+  bool bandera = false;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final nombre = TextEditingController();
-    final correo = TextEditingController();
-    final direccion = TextEditingController();
-    final password = TextEditingController();
-    bool bandera = false;
 
     return Scaffold(
       body: Stack(
@@ -118,6 +119,14 @@ class _CuentaState extends State<Cuenta> {
                           ),
                         ),
                         const SizedBox(height: 20),
+                        bandera
+                            ? Text(
+                                'FALTA LLENAR CAMPOS',
+                                style: TextStyle(
+                                    color: con.terciario, fontSize: 20),
+                              )
+                            : Container(),
+                        const SizedBox(height: 20),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             primary: con.primario,
@@ -129,7 +138,9 @@ class _CuentaState extends State<Cuenta> {
                           ),
                           onPressed: () {
                             if (nombre.text.isNotEmpty &&
-                                correo.text.isNotEmpty && direccion.text.isNotEmpty && password.text.isNotEmpty) {
+                                correo.text.isNotEmpty &&
+                                direccion.text.isNotEmpty &&
+                                password.text.isNotEmpty) {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => const Home()));
                             } else {
@@ -143,12 +154,6 @@ class _CuentaState extends State<Cuenta> {
                             style: TextStyle(color: con.blanco, fontSize: 16),
                           ),
                         ),
-                        bandera
-                            ? Text(
-                          'FALTA LLENAR CAMPOS',
-                          style: TextStyle(color: con.blanco, fontSize: 20, backgroundColor: con.fondo),
-                        )
-                            : Container(),
                         const SizedBox(height: 20),
                         TextButton(
                           onPressed: () {},
@@ -158,7 +163,6 @@ class _CuentaState extends State<Cuenta> {
                           ),
                         ),
                         const SizedBox(height: 20),
-
                       ],
                     ),
                   ),

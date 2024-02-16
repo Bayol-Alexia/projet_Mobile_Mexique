@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'splashScreen.dart';
+
 class drawerWidget extends StatelessWidget {
   const drawerWidget({super.key});
 
@@ -71,7 +73,8 @@ class drawerWidget extends StatelessWidget {
             leading: const Icon(Icons.logout),
             title: const Text('LogOut'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const splashScreen(title: 'Burger',)));
             },
           ),
         ],

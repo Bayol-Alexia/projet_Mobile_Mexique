@@ -96,6 +96,14 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         const SizedBox(height: 20),
+                        bandera
+                            ? Text(
+                                'USUARIO O CONTRASENA INCORRECTOS',
+                                style: TextStyle(
+                                    color: con.terciario, fontSize: 20),
+                              )
+                            : Container(),
+                        const SizedBox(height: 20),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             primary: con.primario,
@@ -103,7 +111,7 @@ class _LoginState extends State<Login> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             fixedSize:
-                            Size(size.width * 0.6, size.height * 0.05),
+                                Size(size.width * 0.6, size.height * 0.05),
                           ),
                           onPressed: () {
                             if (user.text == 'alexia' &&
@@ -130,12 +138,6 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        bandera
-                            ? Text(
-                          'USUARIO O CONTRASENA INCORRECTOS',
-                          style: TextStyle(color: con.blanco, fontSize: 20, backgroundColor: con.fondo),
-                        )
-                            : Container(),
                       ],
                     ),
                   ),
