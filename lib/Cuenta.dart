@@ -60,11 +60,12 @@ class _CuentaState extends State<Cuenta> {
                     color: con.blanco,
                     borderRadius: BorderRadius.circular(30),
                   ),
+
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
                         const Text(
-                          'Bienvenido a Burger Classic',
+                          'Bienvenido al registro',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -73,19 +74,34 @@ class _CuentaState extends State<Cuenta> {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
-
                           obscureText: false,
                           decoration: const InputDecoration(
-                            labelText: 'Correo/Usuario',
+                            labelText: 'Nombre Completo',
                             border: OutlineInputBorder(),
                           ),
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
-
+                          obscureText: false,
+                          decoration: const InputDecoration(
+                            labelText: 'Correo',
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        TextFormField(
+                          obscureText: false,
+                          decoration: const InputDecoration(
+                            labelText: 'Direccion de envio',
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        TextFormField(
                           obscureText: true,
                           decoration: const InputDecoration(
                             labelText: 'Contraseña',
+                            prefixIcon: Icon(Icons.lock),
                             border: OutlineInputBorder(),
                           ),
                         ),
@@ -102,7 +118,7 @@ class _CuentaState extends State<Cuenta> {
                           onPressed: () {},
 
                           child: const Text(
-                            'Iniciar Sesión',
+                            'Regristrarse',
                             style: TextStyle(color: con.blanco, fontSize: 16),
                           ),
                         ),
@@ -110,7 +126,7 @@ class _CuentaState extends State<Cuenta> {
                         TextButton(
                           onPressed: () {},
                           child: const Text(
-                            'Olvidaste tu contraseña?',
+                            'Politicas de Privacidad',
                             style: TextStyle(color: con.secundario),
                           ),
                         ),
