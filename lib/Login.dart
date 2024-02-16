@@ -11,9 +11,14 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final user = TextEditingController();
+  final password = TextEditingController();
+  bool bandera = false;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -28,7 +33,6 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-          // set the backgroud color to brown
           Padding(
             padding: EdgeInsets.only(top: size.height * 0.55),
             child: Container(
@@ -42,7 +46,6 @@ class _LoginState extends State<Login> {
               width: size.width * 0.4,
             ),
           ),
-          //Login Menu without pixel overflow
           Padding(
             padding: EdgeInsets.only(
               top: size.height * 0.45,
@@ -75,14 +78,17 @@ class _LoginState extends State<Login> {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
+                          controller: user,
+                          obscureText: false,
                           decoration: const InputDecoration(
                             labelText: 'Correo/Usuario',
-                            //only the bottom border
                             border: OutlineInputBorder(),
                           ),
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
+                          controller: password,
+                          obscureText: true,
                           decoration: const InputDecoration(
                             labelText: 'Contraseña',
                             border: OutlineInputBorder(),
@@ -96,12 +102,18 @@ class _LoginState extends State<Login> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             fixedSize:
-                                Size(size.width * 0.6, size.height * 0.05),
+                            Size(size.width * 0.6, size.height * 0.05),
                           ),
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (context) => Home()));
+                            if (user.text == 'alexia' &&
+                                password.text == '123456') {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const Home()));
+                            } else {
+                              setState(() {
+                                bandera = true;
+                              });
+                            }
                           },
                           child: const Text(
                             'Iniciar Sesión',
@@ -116,6 +128,13 @@ class _LoginState extends State<Login> {
                             style: TextStyle(color: con.secundario),
                           ),
                         ),
+                        const SizedBox(height: 20),
+                        bandera
+                            ? Text(
+                          'USUARIO O CONTRASENA INCORRECTOS',
+                          style: TextStyle(color: con.blanco, fontSize: 20, backgroundColor: con.fondo),
+                        )
+                            : Container(),
                       ],
                     ),
                   ),
