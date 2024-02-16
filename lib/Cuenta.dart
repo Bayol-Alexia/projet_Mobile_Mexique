@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
 
+import 'Home.dart';
+
 class Cuenta extends StatefulWidget {
   const Cuenta({super.key});
 
@@ -13,6 +15,11 @@ class _CuentaState extends State<Cuenta> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final nombre = TextEditingController();
+    final correo = TextEditingController();
+    final direccion = TextEditingController();
+    final password = TextEditingController();
+    bool bandera = false;
 
     return Scaffold(
       body: Stack(
@@ -60,7 +67,6 @@ class _CuentaState extends State<Cuenta> {
                     color: con.blanco,
                     borderRadius: BorderRadius.circular(30),
                   ),
-
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -74,6 +80,7 @@ class _CuentaState extends State<Cuenta> {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
+                          controller: nombre,
                           obscureText: false,
                           decoration: const InputDecoration(
                             labelText: 'Nombre Completo',
@@ -82,6 +89,7 @@ class _CuentaState extends State<Cuenta> {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
+                          controller: correo,
                           obscureText: false,
                           decoration: const InputDecoration(
                             labelText: 'Correo',
@@ -90,6 +98,7 @@ class _CuentaState extends State<Cuenta> {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
+                          controller: direccion,
                           obscureText: false,
                           decoration: const InputDecoration(
                             labelText: 'Direccion de envio',
@@ -98,6 +107,7 @@ class _CuentaState extends State<Cuenta> {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
+                          controller: password,
                           obscureText: true,
                           decoration: const InputDecoration(
                             labelText: 'Contraseña',
@@ -113,15 +123,30 @@ class _CuentaState extends State<Cuenta> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             fixedSize:
-                            Size(size.width * 0.6, size.height * 0.05),
+                                Size(size.width * 0.6, size.height * 0.05),
                           ),
-                          onPressed: () {},
-
+                          onPressed: () {
+                            if (nombre.text.isNotEmpty &&
+                                correo.text.isNotEmpty && direccion.text.isNotEmpty && password.text.isNotEmpty) {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const Home()));
+                            } else {
+                              setState(() {
+                                bandera = true;
+                              });
+                            }
+                          },
                           child: const Text(
                             'Regristrarse',
                             style: TextStyle(color: con.blanco, fontSize: 16),
                           ),
                         ),
+                        bandera
+                            ? Text(
+                          'FALTA LLENAR CAMPOS',
+                          style: TextStyle(color: con.blanco, fontSize: 20, backgroundColor: con.fondo),
+                        )
+                            : Container(),
                         const SizedBox(height: 20),
                         TextButton(
                           onPressed: () {},
@@ -131,7 +156,8 @@ class _CuentaState extends State<Cuenta> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        ],
+
+                      ],
                     ),
                   ),
                 ),
