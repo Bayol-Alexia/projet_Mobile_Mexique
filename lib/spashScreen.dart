@@ -4,6 +4,8 @@ import 'package:proyecto_mobil/Login.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
 import 'package:proyecto_mobil/dependance.dart';
 
+import 'Home.dart';
+
 
 class splashScreen extends StatefulWidget {
   const splashScreen({super.key, required this.title});
@@ -53,10 +55,10 @@ class _splashScreen extends State<splashScreen> {
           ),
           Padding(
               padding: EdgeInsets.only(
-                  top: size.height * 0.1, left: size.width * 0.1),
+                  top: size.height * 0.05, left: size.width * 0.05),
               child: Align(
                   alignment: Alignment.topLeft,
-                  child: Image.asset('../images/Welcome2.png'))),
+                  child: Image.asset('../images/Welcome2.png', width: size.width*0.4,))),
           Padding(
             padding: EdgeInsets.only(bottom: size.height * 0.1),
             child: Align(
@@ -64,7 +66,7 @@ class _splashScreen extends State<splashScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => Dependencias()));
+                      MaterialPageRoute(builder: (context) => Home()));
                 },
                 child: const Text(
                   'Iniciar Sesión',
