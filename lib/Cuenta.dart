@@ -49,28 +49,50 @@ class _CuentaState extends State<Cuenta> {
               width: size.width * 0.4,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              //top: size.height * 0.45,
-              left: size.width * 0.05,
-              right: size.width * 0.05,
-              bottom: size.height * 0.1,
+          Positioned(
+            top: size.height * 0.25, // Position du haut du rectangle
+            left: size.width * 0.05, // Position de gauche du rectangle
+            right: size.width * 0.05, // Position de droite du rectangle
+            child: Center(
+              child: Container(
+                width: size.width * 0.3, // Largeur du rectangle
+                height: 100, // Hauteur du rectangle
+                decoration: BoxDecoration(
+                  color: Colors.grey[300], // Couleur de fond du rectangle
+                  borderRadius: BorderRadius.circular(15), // Bordures arrondies
+                ),
+                /*child: Center(
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      // Logique pour sélectionner une photo à partir de l'ordinateur
+                    },
+                    icon: Icon(Icons.photo),
+                    label: Text(''),
+                  ),
+                ),*/
+              ),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(
-                    top: size.height * 0.05,
-                    left: size.width * 0.05,
-                    right: size.width * 0.05,
-                  ),
-                  decoration: BoxDecoration(
-                    color: con.blanco,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: SingleChildScrollView(
+          ),
+          Positioned(
+            //top: size.height * 0.45,
+            left: size.width * 0.05,
+            right: size.width * 0.05,
+            bottom: size.height * 0.1,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                      top: size.height * 0.05,
+                      left: size.width * 0.05,
+                      right: size.width * 0.05,
+                    ),
+                    decoration: BoxDecoration(
+                      color: con.blanco,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                     child: Column(
                       children: [
                         const Text(
@@ -166,8 +188,8 @@ class _CuentaState extends State<Cuenta> {
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
