@@ -50,14 +50,16 @@ class _CuentaState extends State<Cuenta> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: size.height * 0.45,
+              //top: size.height * 0.45,
               left: size.width * 0.05,
               right: size.width * 0.05,
+              bottom: size.height * 0.1,
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  height: size.height * 0.50,
                   padding: EdgeInsets.only(
                     top: size.height * 0.05,
                     left: size.width * 0.05,
