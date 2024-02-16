@@ -4,6 +4,7 @@ import 'package:proyecto_mobil/Login.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
 import 'package:proyecto_mobil/dependance.dart';
 
+
 class splashScreen extends StatefulWidget {
   const splashScreen({super.key, required this.title});
 
