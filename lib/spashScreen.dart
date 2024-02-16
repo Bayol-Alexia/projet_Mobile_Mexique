@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_mobil/Login.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
-import 'package:proyecto_mobil/dependance.dart';
-
-import 'Home.dart';
 
 
 class splashScreen extends StatefulWidget {
@@ -66,7 +63,7 @@ class _splashScreen extends State<splashScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => Home()));
+                      MaterialPageRoute(builder: (context) => Login()));
                 },
                 child: const Text(
                   'Iniciar Sesión',
