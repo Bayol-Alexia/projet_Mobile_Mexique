@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
+import 'package:file_picker/file_picker.dart';
 
 import 'Home.dart';
 
@@ -17,6 +18,17 @@ class _CuentaState extends State<Cuenta> {
   final direccion = TextEditingController();
   final password = TextEditingController();
   bool bandera = false;
+  /*late String _filePath;
+
+  void _pickImage() async {
+    final result = await FilePicker.platform.pickFiles(type: FileType.image);
+
+    if (result != null) {
+      setState(() {
+        _filePath = result.files.single.path!;
+      });
+    }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -50,34 +62,10 @@ class _CuentaState extends State<Cuenta> {
             ),
           ),
           Positioned(
-            top: size.height * 0.25, // Position du haut du rectangle
-            left: size.width * 0.05, // Position de gauche du rectangle
-            right: size.width * 0.05, // Position de droite du rectangle
-            child: Center(
-              child: Container(
-                width: size.width * 0.3, // Largeur du rectangle
-                height: 100, // Hauteur du rectangle
-                decoration: BoxDecoration(
-                  color: Colors.grey[300], // Couleur de fond du rectangle
-                  borderRadius: BorderRadius.circular(15), // Bordures arrondies
-                ),
-                /*child: Center(
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      // Logique pour sélectionner une photo à partir de l'ordinateur
-                    },
-                    icon: Icon(Icons.photo),
-                    label: Text(''),
-                  ),
-                ),*/
-              ),
-            ),
-          ),
-          Positioned(
             //top: size.height * 0.45,
             left: size.width * 0.05,
             right: size.width * 0.05,
-            bottom: size.height * 0.1,
+            bottom: size.height * 0.08,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -107,37 +95,37 @@ class _CuentaState extends State<Cuenta> {
                         TextFormField(
                           controller: nombre,
                           obscureText: false,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: 'Nombre Completo',
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
                           ),
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
                           controller: correo,
                           obscureText: false,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: 'Correo',
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
                           ),
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
                           controller: direccion,
                           obscureText: false,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: 'Direccion de envio',
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
                           ),
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
                           controller: password,
                           obscureText: true,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: 'Contraseña',
                             prefixIcon: Icon(Icons.lock),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -189,6 +177,27 @@ class _CuentaState extends State<Cuenta> {
                     ),
                   ),
                 ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: size.height * 0.23, // Position du haut du rectangle
+            left: size.width * 0.05, // Position de gauche du rectangle
+            right: size.width * 0.05, // Position de droite du rectangle
+            child: Center(
+              child: Container(
+                width: size.width * 0.2, // Largeur du rectangle
+                height: 100, // Hauteur du rectangle
+                decoration: BoxDecoration(
+                  color: Colors.grey[300], // Couleur de fond du rectangle
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: con.terciario,width: 3.0),// Bordures arrondies
+                ),
+               /* child: Center(
+                  child: ElevatedButton(
+                    onPressed: _pickImage, child: Text('Foto'),
+                  ),
+                ),*/
               ),
             ),
           ),
