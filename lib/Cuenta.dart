@@ -186,12 +186,19 @@ class _CuentaState extends State<Cuenta> {
             right: size.width * 0.05, // Position de droite du rectangle
             child: Center(
               child: Container(
-                width: size.width * 0.2, // Largeur du rectangle
-                height: 100, // Hauteur du rectangle
+                width: size.width * 0.25, // Largeur du rectangle
+                height: 125, // Hauteur du rectangle
                 decoration: BoxDecoration(
                   color: Colors.grey[300], // Couleur de fond du rectangle
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: con.terciario,width: 3.0),// Bordures arrondies
+                  borderRadius: BorderRadius.circular(15), // Bordures arrondies
+                ),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('../images/FotoLogin.png'),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
                /* child: Center(
                   child: ElevatedButton(
