@@ -6,3 +6,5 @@ const terciario = Color(0xFFEF2A39);
 const fondo = Color(0xFF451717);
 const blanco = Colors.white;
 const negro = Colors.black;
+const amarillo = Color(0xFFFDD001);
+const naranja = Color(0xFFFD5F01);
