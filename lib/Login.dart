@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
+import 'package:proyecto_mobil/utils/sigleton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Home.dart';
 
@@ -14,6 +16,31 @@ class _LoginState extends State<Login> {
   final user = TextEditingController();
   final password = TextEditingController();
   bool bandera = false;
+
+  Singleton singleton = Singleton();
+  late final SharedPreferences prefs;
+
+  @override
+  Future<void> initState() async {
+    prefs = await SharedPreferences.getInstance();
+    initPreferences();
+    super.initState();
+  }
+
+  Future<void> initPreferences() async{
+    prefs = await SharedPreferences.getInstance();
+    checkIsLogin();
+  }
+
+  void checkIsLogin(){
+    //String user = (prefs.getString('user') ?? '');
+    //String password = (prefs.getString('pass') ?? '');
+    bool band = (prefs.getBool('isLogeado') ?? false);
+
+    if (band){
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Home()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +143,13 @@ class _LoginState extends State<Login> {
                           onPressed: () {
                             if (user.text == 'alexia' &&
                                 password.text == '123456') {
+                              singleton.user = user.text;
+                              singleton.password = password.text;
+
+                              prefs.setString('user', user.text);
+                              prefs.setString('pass', password.text);
+                              prefs.setBool('isLogeado', true);
+
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => const Home()));
                             } else {

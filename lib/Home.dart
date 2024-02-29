@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
+import 'package:proyecto_mobil/utils/sigleton.dart';
 
 import 'appBar.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,14 +13,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List titleProducts = [];
+
+  final ScrollController scrollController = ScrollController();
+
+  Singleton singleton = Singleton();
 
   @override
-  void initStates() {
-    titleProducts.add('Todos');
-    titleProducts.add('Combos');
-    titleProducts.add('Clasicos');
-    titleProducts.add('Adicionales');
+  void initState() {
+    singleton.titleProducts.add('Todos');
+
+    singleton.iniciarLista();
+    super.initState();
   }
 
   @override
@@ -42,7 +47,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      drawer: drawerWidget(),
+      drawer: drawerWidget(singleton: singleton),
       body: Stack(children: [
         Column(children: [
           Row(
@@ -62,19 +67,18 @@ class _HomeState extends State<Home> {
             height: 50,
             width: size.width,
             child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const ScrollPhysics(),
-              itemCount: titleProducts.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Text(
-                  titleProducts[index],
-                  style: TextStyle(
-                    color: con.blanco,
-                    fontSize: 18,
-                  ),
-                );
-              }
-            ),
+                scrollDirection: Axis.horizontal,
+                physics: const ScrollPhysics(),
+                itemCount: singleton.titleProducts.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Text(
+                    singleton.titleProducts[index],
+                    style: TextStyle(
+                      color: con.blanco,
+                      fontSize: 18,
+                    ),
+                  );
+                }),
           ),
           listHomeProduct(size: size)
         ])
@@ -100,100 +104,113 @@ class listHomeProduct extends StatelessWidget {
           color: con.naranja,
           borderRadius: BorderRadius.circular(20),
         ),
-        child: SingleChildScrollView(
-          child: Column(children: [
-            Row(
-              children: [
-                Expanded(
-                    flex: 6,
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: con.blanco,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset(
-                            '../images/Welcome2.png',
-                            width: size.width * 0.15,
-                          ),
-                          Text(
-                            'Hamburgesa',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          ),
-                          Text(
-                            'Nuevo estillo',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 15),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellowAccent,
-                                size: 14,
-                              ),
-                              Icon(
-                                Icons.heart_broken_outlined,
-                                size: 14,
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    )),
-                SizedBox(
-                  width: 15,
-                ),
-                Expanded(
-                    flex: 6,
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: con.blanco,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset(
-                            '../images/Welcome2.png',
-                            width: size.width * 0.15,
-                          ),
-                          Text(
-                            'Hamburgesa',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          ),
-                          Text(
-                            'Nuevo estillo',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 15),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellowAccent,
-                                size: 14,
-                              ),
-                              Icon(
-                                Icons.heart_broken_outlined,
-                                size: 14,
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    )),
-              ],
-            )
-          ]),
+        child: SizedBox(
+          height: size.height * 0.65,
+          width: size.width,
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            itemCount: singleton.products.length / 2,
+            itemBuilder: (BuildContext context, int index) {
+              int i=0;
+              i=1;
+              var datos = singleton.products[index].split('#');
+              datos[1];
+              return Row(
+                children: [
+                  Expanded(
+                      flex: 6,
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: con.blanco,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset(
+                              '../images/Hamburguesa2.png',
+                              width: size.width * 0.15,
+                            ),
+                            Text(
+                              'Hamburgesa',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            Text(
+                              'Nuevo estillo',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 15),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellowAccent,
+                                  size: 14,
+                                ),
+                                Icon(
+                                  Icons.heart_broken_outlined,
+                                  size: 14,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      )),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  datos.isNotEmpty ?
+                  Expanded(
+                      flex: 6,
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: con.blanco,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset(
+                              '../images/Welcome2.png',
+                              width: size.width * 0.15,
+                            ),
+                            Text(
+                              'Hamburgesa',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            Text(
+                              'Nuevo estillo',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 15),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellowAccent,
+                                  size: 14,
+                                ),
+                                Icon(
+                                  Icons.heart_broken_outlined,
+                                  size: 14,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                  ) : Container()
+                ],
+              );
+            },
+          ),
         ));
   }
 }
