@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
-import 'package:proyecto_mobil/utils/sigleton.dart';
+import 'package:proyecto_mobil/utils/singleton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Home.dart';

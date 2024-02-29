@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
-import 'package:proyecto_mobil/utils/sigleton.dart';
+import 'package:proyecto_mobil/utils/singleton.dart';
 
 import 'appBar.dart';
 
@@ -20,8 +20,6 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    singleton.titleProducts.add('Todos');
-
     singleton.iniciarLista();
     super.initState();
   }
@@ -67,9 +65,10 @@ class _HomeState extends State<Home> {
             height: 50,
             width: size.width,
             child: ListView.builder(
+              shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                physics: const ScrollPhysics(),
-                itemCount: singleton.titleProducts.length,
+                physics: const BouncingScrollPhysics(),
+                itemCount: (singleton.titleProducts.length/2).ceil(),
                 itemBuilder: (BuildContext context, int index) {
                   return Text(
                     singleton.titleProducts[index],

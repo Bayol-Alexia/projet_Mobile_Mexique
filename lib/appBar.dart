@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proyecto_mobil/utils/sigleton.dart';
+import 'package:proyecto_mobil/utils/singleton.dart';
 
 import 'splashScreen.dart';
 
