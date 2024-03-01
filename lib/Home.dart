@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_mobil/InfoBurger.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
 import 'package:proyecto_mobil/utils/singleton.dart';
 
 import 'appBar.dart';
+import 'InfoBurger.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -115,7 +117,7 @@ class _HomeState extends State<Home> {
                                   builder: (BuildContext context) {
                                     return AlertDialog(
                                       title: Text(datos1[1]),
-                                      content: Text(datos1[2] + '\n precio: '),
+                                      content: Text(datos1[2]),
 
                                       actions: <Widget>[
                                         TextButton(
@@ -126,7 +128,7 @@ class _HomeState extends State<Home> {
                                         TextButton(
                                           child: const Text('Confirm'),
                                           onPressed: () {
-                                            Navigator.of(context).pop();
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => InfoBurger()));
                                           },
                                         ),
                                       ],
@@ -202,7 +204,7 @@ class _HomeState extends State<Home> {
                                               TextButton(
                                                 child: const Text('Confirm'),
                                                 onPressed: () {
-                                                  Navigator.of(context).pop();
+                                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => InfoBurger()));
                                                 },
                                               ),
                                             ],
