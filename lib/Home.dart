@@ -4,7 +4,6 @@ import 'package:proyecto_mobil/utils/singleton.dart';
 
 import 'appBar.dart';
 
-
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -13,7 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   final ScrollController scrollController = ScrollController();
 
   Singleton singleton = Singleton();
@@ -84,7 +82,6 @@ class _HomeState extends State<Home> {
     );
   }
 
-
   Container ListProductHome(Size size, List products) {
     int indexLeft = 0;
     int indexRight = 1;
@@ -109,99 +106,153 @@ class _HomeState extends State<Home> {
                     child: Row(
                       children: [
                         Expanded(
-                            flex: 6,
-                            child: Container(
-                              height: 165,
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: con.blanco,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize
-                                    .min, //OCUPA EL ESPACIO MINIMO DE LOS WIDGETS HIJOS
-                                children: [
-                                  Image.asset(
-                                    '../images/Hamburguesa1.png',
-                                    width: size.width * 0.15,
-                                  ),
-                                  Text(datos1[1],
+                          flex: 6,
+                          child: InkWell(
+                              onTap: () {
+                                print('${datos1[1]}');
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(datos1[1]),
+                                      content: Text(datos1[2] + '\n precio: '),
+
+                                      actions: <Widget>[
+                                        TextButton(
+                                            child: const Text('Cancel'),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            }),
+                                        TextButton(
+                                          child: const Text('Confirm'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              child: Container(
+                                height: 165,
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: con.blanco,
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize
+                                      .min, //OCUPA EL ESPACIO MINIMO DE LOS WIDGETS HIJOS
+                                  children: [
+                                    Image.asset(
+                                      '../images/Hamburguesa1.png',
+                                      width: size.width * 0.15,
+                                    ),
+                                    Text(datos1[1],
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16)),
+                                    Text(
+                                      datos1[2],
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16)),
-                                  Text(
-                                    datos1[2],
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        color: Colors.yellowAccent,
-                                        size: 14,
-                                      ),
-                                      Icon(
-                                        Icons.heart_broken_outlined,
-                                        size: 14,
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 15),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.yellowAccent,
+                                          size: 14,
+                                        ),
+                                        Icon(
+                                          Icons.heart_broken_outlined,
+                                          size: 14,
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              )),
+                        ),
                         SizedBox(
                           width: 15,
                         ),
                         products[index + 1].isNotEmpty
                             ? Expanded(
-                            flex: 6,
-                            child: Container(
-                              height: 165,
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: con.blanco,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize
-                                    .min, //OCUPA EL ESPACIO MINIMO DE LOS WIDGETS HIJOS
-                                children: [
-                                  Image.asset(
-                                    '../images/Hamburguesa2.png',
-                                    width: size.width * 0.15,
-                                  ),
-                                  Text(datos2[1],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16)),
-                                  Text(
-                                    datos2[2],
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 15),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        color: Colors.yellowAccent,
-                                        size: 14,
+                                flex: 6,
+                                child: InkWell(
+                                    onTap: () {
+                                      print('${datos2[1]}');
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text(datos2[1]),
+                                            content: Text(datos2[2]),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                  child: const Text('Cancel'),
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  }),
+                                              TextButton(
+                                                child: const Text('Confirm'),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      height: 165,
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                        color: con.blanco,
+                                        borderRadius: BorderRadius.circular(30),
                                       ),
-                                      Icon(
-                                        Icons.heart_broken_outlined,
-                                        size: 14,
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ))
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize
+                                            .min, //OCUPA EL ESPACIO MINIMO DE LOS WIDGETS HIJOS
+                                        children: [
+                                          Image.asset(
+                                            '../images/Hamburguesa2.png',
+                                            width: size.width * 0.15,
+                                          ),
+                                          Text(datos2[1],
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16)),
+                                          Text(
+                                            datos2[2],
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 15),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Icon(
+                                                Icons.star,
+                                                color: Colors.yellowAccent,
+                                                size: 14,
+                                              ),
+                                              Icon(
+                                                Icons.heart_broken_outlined,
+                                                size: 14,
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    )))
                             : Container()
                       ],
                     ));
