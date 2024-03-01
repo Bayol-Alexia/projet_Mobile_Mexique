@@ -21,8 +21,7 @@ class _LoginState extends State<Login> {
   late final SharedPreferences prefs;
 
   @override
-  Future<void> initState() async {
-    prefs = await SharedPreferences.getInstance();
+  void initState() {
     initPreferences();
     super.initState();
   }

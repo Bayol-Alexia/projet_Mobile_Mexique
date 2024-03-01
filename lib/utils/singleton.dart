@@ -19,6 +19,7 @@ class Singleton {
   String dato = '';
 
   void iniciarLista() {
+    titleProducts.add('Todos');
     titleProducts.add('Combos');
     titleProducts.add('Clasicos');
     titleProducts.add('Adicionales');
