@@ -46,7 +46,7 @@ class _InfoBurgerState extends State<InfoBurger> {
           ),
           child: Column(
             mainAxisSize:
-                MainAxisSize.min, //OCUPA EL ESPACIO MINIMO DE LOS WIDGETS HIJOS
+            MainAxisSize.min, //OCUPA EL ESPACIO MINIMO DE LOS WIDGETS HIJOS
             children: [
               Image.asset(
                 '../images/Hamburguesa1.png',

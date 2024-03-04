@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
-import 'package:file_picker/file_picker.dart';
 
 import 'Home.dart';
 
@@ -18,17 +17,6 @@ class _CuentaState extends State<Cuenta> {
   final direccion = TextEditingController();
   final password = TextEditingController();
   bool bandera = false;
-  /*late String _filePath;
-
-  void _pickImage() async {
-    final result = await FilePicker.platform.pickFiles(type: FileType.image);
-
-    if (result != null) {
-      setState(() {
-        _filePath = result.files.single.path!;
-      });
-    }
-  }*/
 
   @override
   Widget build(BuildContext context) {

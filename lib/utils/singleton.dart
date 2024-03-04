@@ -28,14 +28,14 @@ class Singleton {
       'Combos', 'Combos', 'Combos'
   ];*/
 
-    products.add('1#nombre1#estilo#imagen.png#calif#favoritos#categoria');
-    products.add('2#nombre2#estilo#imagen.png#calif#favoritos#categoria');
-    products.add('3#nombre3#estilo#imagen.png#calif#favoritos#categoria');
-    products.add('4#nombre4#estilo#imagen.png#calif#favoritos#categoria');
-    products.add('5#nombre5#estilo#imagen.png#calif#favoritos#categoria');
-    products.add('6#nombre6#estilo#imagen.png#calif#favoritos#categoria');
-    products.add('7#nombre7#estilo#imagen.png#calif#favoritos#categoria');
-    products.add('8#nombre8#estilo#imagen.png#calif#favoritos#categoria');
+    products.add('1#nombre1#estilo#../images/Hamburguesa1.png#calif#favoritos#Clasicos');
+    products.add('2#nombre2#estilo#../images/Hamburguesa2.png#calif#favoritos#Clasicos');
+    products.add('3#nombre3#estilo#../images/Hamburguesa1.png#calif#favoritos#Clasicos');
+    products.add('4#nombre4#estilo#../images/Hamburguesa2.png#calif#favoritos#Combos');
+    products.add('5#nombre5#estilo#../images/Hamburguesa1.png#calif#favoritos#Clasicos');
+    products.add('6#nombre6#estilo#../images/Hamburguesa2.png#calif#favoritos#Combos');
+    products.add('7#nombre7#estilo#../images/Hamburguesa1.png#calif#favoritos#Adicionales');
+    products.add('8#nombre8#estilo#../images/Hamburguesa2.png#calif#favoritos#Adicionales');
 
   }
 

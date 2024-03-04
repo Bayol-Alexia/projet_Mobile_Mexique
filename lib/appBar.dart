@@ -23,7 +23,7 @@ class drawerWidget extends StatelessWidget {
             child: UserAccountsDrawerHeader(
               decoration: BoxDecoration(color: Colors.green),
               accountName: Text(
-             singleton.user,
+                singleton.user,
                 style: TextStyle(fontSize: 18),
               ),
               accountEmail: Text("alexia.bayol@hotmail.fr"),
@@ -31,7 +31,7 @@ class drawerWidget extends StatelessWidget {
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Color.fromARGB(255, 165, 255, 137),
                 child: Text(
-                  "A",
+                  "AB",
                   style: TextStyle(fontSize: 30.0, color: Colors.blue),
                 ), //Text
               ), //circleAvatar
