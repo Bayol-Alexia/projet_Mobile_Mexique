@@ -11,6 +11,9 @@ class Singleton {
   String user = '';
   String password = '';
 
+  double latitud = 0;
+  double longitud = 0;
+
   List titleProducts = [];
   List products = [];
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
 import 'package:proyecto_mobil/utils/singleton.dart';
+import 'package:proyecto_mobil/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Home.dart';
@@ -23,7 +25,14 @@ class _LoginState extends State<Login> {
   @override
   void initState() {
     initPreferences();
+    checkPosition();
     super.initState();
+  }
+
+  void checkPosition() async{
+    Position position = await Utils.determinePosition();
+    singleton.latitud = position.latitude;
+    singleton.longitud = position.longitude;
   }
 
   Future<void> initPreferences() async{
