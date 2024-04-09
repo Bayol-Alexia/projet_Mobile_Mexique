@@ -8,3 +8,4 @@ const blanco = Colors.white;
 const negro = Colors.black;
 const amarillo = Color(0xFFFDD001);
 const naranja = Color(0xFFFD5F01);
+const darkBrown = Color(0xFF3E2723);

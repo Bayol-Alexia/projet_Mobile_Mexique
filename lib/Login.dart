@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:proyecto_mobil/constantes.dart' as con;
 import 'package:proyecto_mobil/utils/singleton.dart';
-import 'package:proyecto_mobil/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'Home.dart';
+import 'package:proyecto_mobil/utils/utils.dart';
+import 'home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -19,34 +18,36 @@ class _LoginState extends State<Login> {
   final password = TextEditingController();
   bool bandera = false;
 
+  //initialize prefs
+
   Singleton singleton = Singleton();
   late final SharedPreferences prefs;
 
   @override
   void initState() {
-    initPreferences();
     checkPosition();
     super.initState();
   }
 
-  void checkPosition() async{
+  void checkPosition() async {
     Position position = await Utils.determinePosition();
     singleton.latitud = position.latitude;
     singleton.longitud = position.longitude;
   }
 
-  Future<void> initPreferences() async{
+  Future<void> initPreferences() async {
     prefs = await SharedPreferences.getInstance();
     checkIsLogin();
   }
 
-  void checkIsLogin(){
+  void checkIsLogin() {
     //String user = (prefs.getString('user') ?? '');
     //String password = (prefs.getString('pass') ?? '');
     bool band = (prefs.getBool('isLogeado') ?? false);
 
-    if (band){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Home()));
+    if (band) {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const Home()));
     }
   }
 
@@ -62,7 +63,7 @@ class _LoginState extends State<Login> {
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('../images/Welcome1.png'),
+                  image: AssetImage('images/Welcome1.png'),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -77,7 +78,7 @@ class _LoginState extends State<Login> {
           Align(
             alignment: Alignment.topCenter,
             child: Image.asset(
-              '../images/Welcome2.png',
+              'images/Welcome2.png',
               width: size.width * 0.4,
             ),
           ),
@@ -87,21 +88,22 @@ class _LoginState extends State<Login> {
               right: size.width * 0.05,
               bottom: size.height * 0.2,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(
-                    top: size.height * 0.05,
-                    left: size.width * 0.05,
-                    right: size.width * 0.05,
-                  ),
-                  decoration: BoxDecoration(
-                    color: con.blanco,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: SingleChildScrollView(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(top: size.height * 0.18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                      top: size.height * 0.05,
+                      left: size.width * 0.05,
+                      right: size.width * 0.05,
+                    ),
+                    decoration: BoxDecoration(
+                      color: con.blanco,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                     child: Column(
                       children: [
                         const Text(
@@ -112,7 +114,7 @@ class _LoginState extends State<Login> {
                             color: con.secundario,
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: size.height * 0.01),
                         TextFormField(
                           controller: user,
                           obscureText: false,
@@ -121,7 +123,7 @@ class _LoginState extends State<Login> {
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: size.height * 0.01),
                         TextFormField(
                           controller: password,
                           obscureText: true,
@@ -130,33 +132,33 @@ class _LoginState extends State<Login> {
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: size.height * 0.01),
                         bandera
                             ? Text(
-                                'USUARIO O CONTRASENA INCORRECTOS',
-                                style: TextStyle(
-                                    color: con.terciario, fontSize: 20),
-                              )
+                          'USUARIO O CONTRASENA INCORRECTOS',
+                          style: TextStyle(
+                              color: con.terciario, fontSize: 20),
+                        )
                             : Container(),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: con.primario,
+                            backgroundColor: con.primario,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
                             fixedSize:
-                                Size(size.width * 0.6, size.height * 0.05),
+                            Size(size.width * 0.6, size.height * 0.05),
                           ),
                           onPressed: () {
-                            if (user.text == 'alexia' &&
-                                password.text == '123456') {
+                            if (user.text == 'admin' &&
+                                password.text == 'admin') {
                               singleton.user = user.text;
                               singleton.password = password.text;
 
-                              prefs.setString('user', user.text);
-                              prefs.setString('pass', password.text);
-                              prefs.setBool('isLogeado', true);
+                              // prefs.setString('user', user.text);
+                              // prefs.setString('pass', password.text);
+                              // prefs.setBool('isLogeado', true);
 
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => const Home()));
@@ -171,7 +173,7 @@ class _LoginState extends State<Login> {
                             style: TextStyle(color: con.blanco, fontSize: 16),
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: size.height * 0.01),
                         TextButton(
                           onPressed: () {},
                           child: const Text(
@@ -179,12 +181,12 @@ class _LoginState extends State<Login> {
                             style: TextStyle(color: con.secundario),
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: size.height * 0.01),
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

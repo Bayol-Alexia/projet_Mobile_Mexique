@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_mobil/constantes.dart' as con;
+import 'package:proyecto_mobil/constantes.dart' as cons;
 import 'package:proyecto_mobil/utils/singleton.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
@@ -27,7 +27,7 @@ class _Map extends State<Map> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Map'),
-        backgroundColor: con.blanco,
+        backgroundColor: cons.blanco,
       ),
       body: Stack(
         children: [

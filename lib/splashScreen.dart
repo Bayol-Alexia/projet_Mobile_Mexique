@@ -72,7 +72,7 @@ class _splashScreen extends State<splashScreen> {
                   style: TextStyle(color: con.blanco),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: con.primario,
+                  backgroundColor: con.primario,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),

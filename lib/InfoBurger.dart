@@ -25,7 +25,7 @@ class _InfoBurgerState extends State<InfoBurger> {
           backgroundColor: con.fondo,
           title: Center(
             child: Image.asset(
-              '../images/Welcome2.png',
+              'images/Welcome2.png',
               width: size.width * 0.1,
             ),
           ),
@@ -49,7 +49,7 @@ class _InfoBurgerState extends State<InfoBurger> {
             MainAxisSize.min, //OCUPA EL ESPACIO MINIMO DE LOS WIDGETS HIJOS
             children: [
               Image.asset(
-                '../images/Hamburguesa1.png',
+                'images/Hamburguesa1.png',
                 width: size.width * 0.8,
               ),
               Text(datos1[1],

@@ -127,7 +127,7 @@ class _CuentaState extends State<Cuenta> {
                         const SizedBox(height: 20),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: con.primario,
+                            backgroundColor: con.primario,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
